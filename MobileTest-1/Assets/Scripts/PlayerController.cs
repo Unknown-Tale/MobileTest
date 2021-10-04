@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 1500;
+    private float speed = 750;
 	public Transform cam;
 	public Vector3 MoveVector;
 	
