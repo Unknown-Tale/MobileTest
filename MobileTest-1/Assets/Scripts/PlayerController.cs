@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody playerRb;
-    private float speed = 750;
+    protected Joystick joystick;
+	protected Joybutton joybutton;
+	
+	private Rigidbody playerRb;
+    private float speed = 1000;
 	public Transform cam;
 	public Vector3 MoveVector;
 	
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
+        joystick = FindObjectOfType<Joystick>();
+		joybutton = FindObjectOfType<Joybutton>();
+		playerRb = GetComponent<Rigidbody>();
     }
 	
     void FixedUpdate()
     {
 		//declare movement of the player
 		Vector3 dir = Vector3.zero;
-		dir.x = Input.GetAxis("Horizontal");
-		dir.z = Input.GetAxis("Vertical");
+		dir.x = joystick.Horizontal;
+		dir.z = joystick.Vertical;
 		if (dir.magnitude >= 0.1f) {
 			dir.Normalize();
 		}
