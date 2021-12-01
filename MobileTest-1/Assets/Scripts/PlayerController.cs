@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     protected Joystick joystick;
-	protected Joybutton joybutton;
+	public Joybutton joybutton;
 	
 	private Rigidbody playerRb;
     private float speed = 1000;
+	public float jumpSpeed = 10f;
 	public Transform cam;
 	public Vector3 MoveVector;
+	public bool grounded = true;
 	
     void Start()
     {
         joystick = FindObjectOfType<Joystick>();
-		joybutton = FindObjectOfType<Joybutton>();
 		playerRb = GetComponent<Rigidbody>();
     }
 	
@@ -32,5 +33,15 @@ public class PlayerController : MonoBehaviour
 		
 		//move the player
 		playerRb.AddForce(MoveVector * speed * Time.deltaTime);
+		
+		//make player jump
+		if (joybutton.Pressed && grounded) {
+			playerRb.AddForce(new Vector3 (0, 15, 0), ForceMode.Impulse);
+			grounded = false;
+		}
     }
+	
+	void OnCollisionEnter(Collision collision) {
+		grounded = true;
+	}
 }
