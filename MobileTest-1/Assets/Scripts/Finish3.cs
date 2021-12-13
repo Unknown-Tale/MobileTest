@@ -17,6 +17,6 @@ public class Finish3 : MonoBehaviour
 	{
 		FinishText.GetComponent<Text>().text = "Level Complete!";
 		yield return new WaitForSeconds(10);
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene(3);
 	}
 }
