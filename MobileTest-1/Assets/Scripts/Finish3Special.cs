@@ -17,6 +17,6 @@ public class Finish3Special : MonoBehaviour
 	{
 		FinishText.GetComponent<Text>().text = "I can't believe you did that!";
 		yield return new WaitForSeconds(10);
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene(4);
 	}
 }
